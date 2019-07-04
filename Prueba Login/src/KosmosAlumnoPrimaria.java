@@ -12,6 +12,8 @@ public class KosmosAlumnoPrimaria extends CapabilitiesSets {
 	public static void main(String[] args) throws MalformedURLException, InterruptedException{
 
 		IOSDriver<IOSElement>driver = capabilities();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, String> scrollObject = new HashMap<String, String>();
 		
 		driver.findElementByAccessibilityId("newUser").click();
 		driver.findElementByAccessibilityId("usernameTextField").click();
@@ -21,15 +23,52 @@ public class KosmosAlumnoPrimaria extends CapabilitiesSets {
 		driver.findElementByAccessibilityId("passwordTextField").sendKeys("1234");
 		driver.hideKeyboard();
 		driver.findElementByAccessibilityId("loginButton").click();
-		driver.findElementByAccessibilityId("Mis Clases").click();
-		//driver.findElementByAccessibilityId("buttonScreen").click();
+		Thread.sleep(5000);
+		driver.findElementByAccessibilityId("Mis Clases").click();Thread.sleep(2000);
+		driver.findElementByAccessibilityId("buttonHome off").click(); //Ir a portada del reto
+		driver.findElementByAccessibilityId("videoEngBtnDYK").click();
+		Thread.sleep(10000);//Reproducir video de portada de reto
+		driver.findElementByAccessibilityId("closeBtn").click(); //Cerrar video
+		Thread.sleep(1000);
+		driver.findElementByAccessibilityId("refresh").click(); //Refresh en portada de reto
+		driver.findElementByAccessibilityId("buttonScreen").click(); //Seleccionar clase
+		scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        driver.findElementByAccessibilityId("refresh").click(); //refresh en la sesión
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+        scrollObject.put("direction", "left");
+        js.executeScript("mobile: swipe", scrollObject);
+		driver.findElementByAccessibilityId("dashboardKinder").click(); //Dashboard de reto
+		driver.findElementByAccessibilityId("challenge1").click(); //Cambiar reto
+		Thread.sleep(2000);
+		driver.findElementByAccessibilityId("dashboardKinder").click(); //Dashboard de reto
+		driver.findElementByAccessibilityId("challenge2").click(); //Cambiar reto
+		Thread.sleep(2000);
+		driver.findElementByAccessibilityId("dashboardKinder").click(); //Dashboard de reto
+		driver.findElementByAccessibilityId("challenge3").click(); //Cambiar reto
+		Thread.sleep(2000);
+		driver.findElementByAccessibilityId("buttonScreen").click(); //Seleccionar clase
+		driver.findElementByAccessibilityId("btnClases1").click(); //Seleccionar clase
+		driver.findElementByAccessibilityId("buttonScreen").click(); //Seleccionar clase
+		driver.findElementByAccessibilityId("btnClases2").click(); //Seleccionar clase
+
 		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-        HashMap<String, String> scrollObject = new HashMap<String, String>();
-        scrollObject.put("direction", "left");
-        js.executeScript("mobile: swipe", scrollObject);
-        scrollObject.put("direction", "left");
-        js.executeScript("mobile: swipe", scrollObject);
+		
+		
+		
+		
+        
         
 		driver.findElementByAccessibilityId("activityButton6").click();
 		driver.findElementByAccessibilityId("step2").click();
